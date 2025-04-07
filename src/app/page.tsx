@@ -291,7 +291,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-32 pb-20 relative">
+      <section className="min-h-screen container mx-auto px-4 relative flex items-center justify-center">
         {/* Decorative background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl" />
@@ -302,7 +302,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center max-w-4xl mx-auto relative z-10"
+          className="text-center max-w-4xl mx-auto relative z-10 py-20"
         >
           <motion.div
             className="flex justify-center mb-8"
