@@ -161,9 +161,12 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
-                  const target = document.querySelector('#about');
+                  const target = document.getElementById('about');
                   if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.scrollTo({
+                      top: target.offsetTop - 80,
+                      behavior: 'smooth'
+                    });
                   }
                 }}
               >
@@ -175,9 +178,12 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
-                  const target = document.querySelector('#governance');
+                  const target = document.getElementById('governance');
                   if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.scrollTo({
+                      top: target.offsetTop - 80,
+                      behavior: 'smooth'
+                    });
                   }
                 }}
               >
@@ -189,9 +195,12 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
-                  const target = document.querySelector('#contribute');
+                  const target = document.getElementById('contribute');
                   if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.scrollTo({
+                      top: target.offsetTop - 80,
+                      behavior: 'smooth'
+                    });
                   }
                 }}
               >
@@ -203,9 +212,12 @@ export default function Home() {
                 onClick={(e) => {
                   e.preventDefault();
                   setIsMobileMenuOpen(false);
-                  const target = document.querySelector('#waitlist');
+                  const target = document.getElementById('waitlist');
                   if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    window.scrollTo({
+                      top: target.offsetTop - 80,
+                      behavior: 'smooth'
+                    });
                   }
                 }}
               >
@@ -320,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="container mx-auto px-4 py-20">
+      <section id="about" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
             whileHover={{ y: -10 }}
@@ -352,7 +364,7 @@ export default function Home() {
       </section>
 
       {/* Governance Section */}
-      <section id="governance" className="container mx-auto px-4 py-20">
+      <section id="governance" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Decentralized Governance</h2>
           <p className="text-gray-400 mb-8">
@@ -389,7 +401,7 @@ export default function Home() {
       </section>
 
       {/* Contribute Section */}
-      <section id="contribute" className="container mx-auto px-4 py-20">
+      <section id="contribute" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">How to Contribute</h2>
           <p className="text-gray-400 mb-8">
@@ -422,7 +434,7 @@ export default function Home() {
       </section>
 
       {/* Waitlist Section */}
-      <section id="waitlist" className="container mx-auto px-4 py-20">
+      <section id="waitlist" className="container mx-auto px-4 py-20 scroll-mt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
