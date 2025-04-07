@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }
     ],
     shortcut: '/favicon.svg',
     apple: '/favicon.svg',
@@ -26,6 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+      </head>
       <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
       </body>
