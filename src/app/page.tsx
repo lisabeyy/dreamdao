@@ -151,11 +151,11 @@ export default function Home() {
           <motion.div
             initial={false}
             animate={{
-              height: isMobileMenuOpen ? '100vh' : 0,
+              height: isMobileMenuOpen ? 'calc(100vh - 80px)' : 0,
               opacity: isMobileMenuOpen ? 1 : 0
             }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-sm z-50 overflow-hidden ${isMobileMenuOpen ? 'block' : 'hidden'
+            className={`md:hidden fixed top-20 left-0 right-0 bg-black/95 backdrop-blur-sm z-30 overflow-hidden ${isMobileMenuOpen ? 'block' : 'hidden'
               }`}
           >
             <div className="container mx-auto px-4 h-full flex flex-col justify-center items-center">
@@ -258,9 +258,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-white hover:text-cyan-400 transition-colors duration-300"
                 >
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
+                  <FaXTwitter size={32} />
                 </a>
                 <a
                   href="https://medium.com/dreamdao"
@@ -268,9 +266,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-white hover:text-cyan-400 transition-colors duration-300"
                 >
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7 8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V8zm5 0a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V8zm5 0a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V8zm5 0a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V8z" />
-                  </svg>
+                  <FaMedium size={32} />
                 </a>
                 <a
                   href="https://linkedin.com/company/dreamdao"
@@ -278,9 +274,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-white hover:text-cyan-400 transition-colors duration-300"
                 >
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                  </svg>
+                  <FaLinkedin size={32} />
                 </a>
                 <a
                   href="https://t.me/dreamdao"
@@ -288,9 +282,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-white hover:text-cyan-400 transition-colors duration-300"
                 >
-                  <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.98 1.26-5.59 3.7-.53.36-1.01.53-1.44.52-.47-.01-1.38-.27-2.06-.49-.85-.28-1.53-.43-1.47-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.57 3.93-1.61 4.75-1.89 5.27-1.89.11 0 .36.03.52.18.14.14.18.33.2.52-.01.17-.01.47-.02.67z" />
-                  </svg>
+                  <FaTelegram size={32} />
                 </a>
               </div>
             </div>

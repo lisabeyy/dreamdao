@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.variable} font-sans bg-white dark:bg-[#0A0A0A] text-gray-900 dark:text-white transition-colors duration-200`}>
+    <html lang="en">
+      <body className={`${spaceGrotesk.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
