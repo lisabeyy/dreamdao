@@ -4,6 +4,9 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FiArrowRight, FiUsers, FiBook, FiCalendar, FiAward, FiGithub, FiTwitter, FiMessageCircle, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 import { FaXTwitter, FaMedium, FaLinkedin, FaTelegram } from 'react-icons/fa6';
+import { SiBlockchaindotcom, SiEthereum, SiWeb3Dotjs } from 'react-icons/si';
+import { BsGlobe, BsRocket, BsLightningCharge, BsStars } from 'react-icons/bs';
+import { TbWorldWww, TbBrain, TbChartDots3, TbPuzzle } from 'react-icons/tb';
 
 export default function Home() {
   const [email, setEmail] = useState('');
@@ -393,30 +396,45 @@ export default function Home() {
       <section id="about" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
-            whileHover={{ y: -10 }}
-            className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
           >
-            <FiBook className="text-4xl mb-4 text-cyan-400" />
-            <h3 className="text-xl font-bold mb-2">Educational Content</h3>
-            <p className="text-gray-400">Access to curated STEM resources and learning materials</p>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-gray-500 to-gray-700 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <TbBrain className="text-3xl text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Educational Content</h3>
+            <p className="text-gray-600 dark:text-gray-400">Access to curated STEM resources and learning materials</p>
           </motion.div>
 
           <motion.div
-            whileHover={{ y: -10 }}
-            className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
           >
-            <FiCalendar className="text-4xl mb-4 text-cyan-400" />
-            <h3 className="text-xl font-bold mb-2">Exclusive Events</h3>
-            <p className="text-gray-400">Join our community events and networking opportunities</p>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-gray-500 to-gray-700 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <BsRocket className="text-3xl text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Exclusive Events</h3>
+            <p className="text-gray-600 dark:text-gray-400">Join our community events and networking opportunities</p>
           </motion.div>
 
           <motion.div
-            whileHover={{ y: -10 }}
-            className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
           >
-            <FiAward className="text-4xl mb-4 text-cyan-400" />
-            <h3 className="text-xl font-bold mb-2">Free Resources</h3>
-            <p className="text-gray-400">Get access to valuable tools and resources for your STEM journey</p>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-gray-500 to-gray-700 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <BsStars className="text-3xl text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Free Resources</h3>
+            <p className="text-gray-600 dark:text-gray-400">Get access to valuable tools and resources for your STEM journey</p>
           </motion.div>
         </div>
       </section>
@@ -424,34 +442,64 @@ export default function Home() {
       {/* Governance Section */}
       <section id="governance" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Decentralized Governance</h2>
-          <p className="text-gray-400 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">Decentralized Governance</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">
             Dream DAO is governed by 4 dedicated governors who oversee the organization's direction and initiatives.
             Our governance model ensures transparency and community-driven decision making.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold mb-4">Governance Structure</h3>
-              <ul className="text-left text-gray-400 space-y-2">
-                <li>• 4 Governors overseeing operations</li>
-                <li>• Community-driven proposals</li>
-                <li>• Transparent decision making</li>
-                <li>• Regular governance meetings</li>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 mx-auto rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <SiBlockchaindotcom className="text-3xl text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Governance Structure</h3>
+              <ul className="text-left text-gray-600 dark:text-gray-400 space-y-2">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  4 Governors overseeing operations
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Community-driven proposals
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Transparent decision making
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Regular governance meetings
+                </li>
               </ul>
             </motion.div>
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold mb-4">How to Participate</h3>
-              <ul className="text-left text-gray-400 space-y-2">
-                <li>• Join our waitlist for updates</li>
-                <li>• Attend governance meetings</li>
-                <li>• Submit proposals</li>
-                <li>• Vote on important decisions</li>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 mx-auto rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <TbChartDots3 className="text-3xl text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">How to Participate</h3>
+              <ul className="text-left text-gray-600 dark:text-gray-400 space-y-2">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Join our waitlist for updates
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Attend governance meetings
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Submit proposals
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 rounded-full bg-gray-600 dark:bg-gray-400 mr-2"></span>
+                  Vote on important decisions
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -461,31 +509,40 @@ export default function Home() {
       {/* Contribute Section */}
       <section id="contribute" className="container mx-auto px-4 py-20 scroll-mt-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">How to Contribute</h2>
-          <p className="text-gray-400 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">How to Contribute</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-8">
             Join us in building a better future for women in STEM. There are multiple ways to contribute to our mission.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold mb-4">Share Knowledge</h3>
-              <p className="text-gray-400">Contribute educational content and resources</p>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 mx-auto rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <TbWorldWww className="text-3xl text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Share Knowledge</h3>
+              <p className="text-gray-600 dark:text-gray-400">Contribute educational content and resources</p>
             </motion.div>
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold mb-4">Mentor Others</h3>
-              <p className="text-gray-400">Guide and support aspiring women in STEM</p>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 mx-auto rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <BsLightningCharge className="text-3xl text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Mentor Others</h3>
+              <p className="text-gray-600 dark:text-gray-400">Guide and support aspiring women in STEM</p>
             </motion.div>
             <motion.div
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-800"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="bg-gradient-to-br from-gray-50/10 to-gray-50/5 dark:from-black/50 dark:to-black/30 p-8 rounded-2xl backdrop-blur-sm border border-gray-200/20 dark:border-gray-800/50 shadow-lg hover:shadow-gray-500/5 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold mb-4">Spread the Word</h3>
-              <p className="text-gray-400">Help us grow our community and reach</p>
+              <div className="relative flex items-center justify-center w-16 h-16 mb-6 mx-auto rounded-full bg-gradient-to-r from-gray-700 to-gray-900">
+                <TbPuzzle className="text-3xl text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Spread the Word</h3>
+              <p className="text-gray-600 dark:text-gray-400">Help us grow our community and reach</p>
             </motion.div>
           </div>
         </div>
