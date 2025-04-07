@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { FiArrowRight, FiUsers, FiBook, FiCalendar, FiAward, FiGithub, FiTwitter, FiMessageCircle, FiSun, FiMoon } from 'react-icons/fi';
+import { FiArrowRight, FiUsers, FiBook, FiCalendar, FiAward, FiGithub, FiTwitter, FiMessageCircle, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 import { FaXTwitter, FaMedium, FaLinkedin, FaTelegram } from 'react-icons/fa6';
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
     damping: 30,
     restDelta: 0.001
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Check system preference
@@ -28,7 +29,24 @@ export default function Home() {
       setCursorPosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+
+    // Add smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (this: HTMLAnchorElement, e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href')!);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   const toggleDarkMode = () => {
@@ -80,40 +98,137 @@ export default function Home() {
 
       {/* Header */}
       <header className="fixed w-full bg-white/80 dark:bg-black/50 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
-        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent font-space-grotesk">
-              Dream DAO
+        <nav className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent font-space-grotesk">
+                Dream DAO
+              </div>
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
             </div>
-            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex items-center space-x-8">
+                <a href="#about" className="hover:text-cyan-400 transition-colors duration-300">About</a>
+                <a href="#governance" className="hover:text-cyan-400 transition-colors duration-300">Governance</a>
+                <a href="#contribute" className="hover:text-cyan-400 transition-colors duration-300">Contribute</a>
+              </div>
+              <div className="flex items-center space-x-4">
+                <a href="#waitlist" className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full transition-all duration-300">
+                  Join Waitlist
+                </a>
+                <button
+                  onClick={toggleDarkMode}
+                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+                  aria-label="Toggle dark mode"
+                >
+                  {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center space-x-4">
+              <button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+                aria-label="Toggle dark mode"
+              >
+                {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+              </button>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              </button>
+            </div>
           </div>
-          <div className="flex items-center space-x-8">
-            <div className="hidden md:flex space-x-8">
-              <a href="#about" className="hover:text-cyan-400 transition-colors duration-300">About</a>
-              <a href="#governance" className="hover:text-cyan-400 transition-colors duration-300">Governance</a>
-              <a href="#contribute" className="hover:text-cyan-400 transition-colors duration-300">Contribute</a>
-              <a href="#waitlist" className="bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full transition-all duration-300">
+
+          {/* Mobile Menu */}
+          <motion.div
+            initial={false}
+            animate={{ height: isMobileMenuOpen ? 'auto' : 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="py-4 space-y-4">
+              <a
+                href="#about"
+                className="block hover:text-cyan-400 transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  const target = document.querySelector('#about');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                About
+              </a>
+              <a
+                href="#governance"
+                className="block hover:text-cyan-400 transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  const target = document.querySelector('#governance');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                Governance
+              </a>
+              <a
+                href="#contribute"
+                className="block hover:text-cyan-400 transition-colors duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  const target = document.querySelector('#contribute');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                Contribute
+              </a>
+              <a
+                href="#waitlist"
+                className="block bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-full transition-all duration-300 text-center"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  const target = document.querySelector('#waitlist');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
                 Join Waitlist
               </a>
             </div>
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
-              aria-label="Toggle dark mode"
-            >
-              {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-            </button>
-          </div>
+          </motion.div>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 pt-32 pb-20">
+      <section className="container mx-auto px-4 pt-32 pb-20 relative">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl" />
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-center max-w-4xl mx-auto"
+          className="text-center max-w-4xl mx-auto relative z-10"
         >
           <motion.div
             className="flex justify-center mb-8"
@@ -122,22 +237,56 @@ export default function Home() {
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           >
             <div className="relative">
-              <div className="w-20 h-20 rounded-full border-4 border-cyan-400 flex items-center justify-center">
-                <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" />
+              {/* Main circle */}
+              <div className="w-32 h-32 rounded-full border-4 border-cyan-400 flex items-center justify-center relative">
+                <div className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse" style={{ animationDuration: '3s' }} />
+
+                {/* Outer spinning circle */}
+                <div className="absolute -inset-6 border-2 border-blue-400/20 rounded-full animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}>
+                  {/* Dot on outer circle */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-400/50 animate-ping" style={{ animationDuration: '6s', animationDelay: '0s', animationIterationCount: 'infinite' }} />
+                </div>
+
+                {/* Middle spinning circle */}
+                <div className="absolute -inset-4 border-2 border-cyan-400/20 rounded-full animate-spin" style={{ animationDuration: '20s' }}>
+                  {/* Dot on middle circle */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-cyan-400/50 animate-ping" style={{ animationDuration: '6s', animationDelay: '3s', animationIterationCount: 'infinite' }} />
+                </div>
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-cyan-400/50 animate-ping" />
-              <div className="absolute -bottom-1 -left-1 w-4 h-4 rounded-full bg-cyan-400/50 animate-ping" />
             </div>
           </motion.div>
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6 font-space-grotesk">
             <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Dream DAO
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-700 dark:text-gray-300">
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl md:text-2xl mb-4 text-gray-700 dark:text-gray-300"
+          >
             Empowering Women in STEM through Decentralized Governance and Education
-          </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
+          >
+            Join a community of innovators, creators, and leaders shaping the future of technology. Together, we're building a more inclusive and equitable STEM landscape.
+          </motion.p>
+
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.8 }}
+            className="flex flex-col md:flex-row gap-4 justify-center"
+          >
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -153,10 +302,21 @@ export default function Home() {
               href="#learn-more"
               className="border border-cyan-500 text-cyan-500 hover:bg-cyan-500/10 font-bold py-3 px-8 rounded-full inline-flex items-center transition-all duration-300"
             >
-              Learn More
+              Discover More
             </motion.a>
-          </div>
+          </motion.div>
         </motion.div>
+
+        {/* Decorative background image */}
+        <div className="absolute inset-0 -z-10 opacity-10 dark:opacity-5">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: 'url("https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop")',
+              filter: 'blur(8px)'
+            }}
+          />
+        </div>
       </section>
 
       {/* About Section */}
@@ -289,7 +449,7 @@ export default function Home() {
                 In the meantime, join our Telegram channel to stay updated with the latest news and announcements.
               </p>
               <motion.a
-                href="https://t.me/dreamdao"
+                href="https://t.me/dreamdaowip"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -334,7 +494,7 @@ export default function Home() {
               href="https://twitter.com/dreamdao"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-cyan-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300"
             >
               <FaXTwitter size={24} />
             </a>
@@ -342,7 +502,7 @@ export default function Home() {
               href="https://medium.com/dreamdao"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-cyan-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300"
             >
               <FaMedium size={24} />
             </a>
@@ -350,7 +510,7 @@ export default function Home() {
               href="https://linkedin.com/company/dreamdao"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-cyan-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300"
             >
               <FaLinkedin size={24} />
             </a>
@@ -358,7 +518,7 @@ export default function Home() {
               href="https://t.me/dreamdao"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-cyan-400 transition-colors"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300"
             >
               <FaTelegram size={24} />
             </a>

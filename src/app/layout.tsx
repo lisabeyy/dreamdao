@@ -9,7 +9,12 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Dream DAO - Empowering Women in STEM",
-  description: "Join Dream DAO, a decentralized autonomous organization focused on empowering women in STEM through education, events, and resources.",
+  description: "Join Dream DAO, a community empowering women in STEM through decentralized governance and education.",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
